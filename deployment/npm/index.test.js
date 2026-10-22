@@ -26,6 +26,13 @@ assert.strictEqual(
   "load(\":a.bzl\", \"a\")\nload(\":b.bzl\", \"b\")\n\ndef f(x):\n    return x\n",
 );
 
+// deeply nested code doesn't overflow the stack
+const nested = `${"[".repeat(200)}1${"]".repeat(200)}`;
+assert.strictEqual(
+  formatter.formatText({ filePath: "defs.bzl", fileText: `x=${nested}\n` }),
+  `x = ${nested}\n`,
+);
+
 // uses the global newLineKind
 formatter.setConfig({ newLineKind: "crlf" }, {});
 assert.strictEqual(
