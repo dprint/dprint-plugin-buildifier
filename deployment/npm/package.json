@@ -1,0 +1,32 @@
+{
+  "name": "@dprint/buildifier",
+  "version": "0.0.0",
+  "description": "Wasm buffer for dprint-plugin-buildifier.",
+  "keywords": [
+    "bazel",
+    "starlark",
+    "buildifier",
+    "bzl",
+    "code",
+    "formatter",
+    "dprint"
+  ],
+  "homepage": "https://github.com/dprint/dprint-plugin-buildifier#readme",
+  "bugs": {
+    "url": "https://github.com/dprint/dprint-plugin-buildifier/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dprint/dprint-plugin-buildifier.git"
+  },
+  "license": "MIT",
+  "author": "David Sherret",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "scripts": {
+    "test": "node index.test.js"
+  },
+  "devDependencies": {
+    "@dprint/formatter": "~0.4.0"
+  }
+}

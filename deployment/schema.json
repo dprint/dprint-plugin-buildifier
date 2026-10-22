@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://plugins.dprint.dev/dprint/dprint-plugin-buildifier/0.0.0/schema.json",
+  "type": "object",
+  "properties": {
+    "newLineKind": {
+      "description": "The kind of newline to use. buildifier itself always uses line feeds.",
+      "type": "string",
+      "default": "lf",
+      "oneOf": [
+        {
+          "const": "auto",
+          "description": "For each file, uses the newline kind found at the end of the last line."
+        },
+        {
+          "const": "crlf",
+          "description": "Uses carriage return, line feed."
+        },
+        {
+          "const": "lf",
+          "description": "Uses line feed."
+        }
+      ]
+    }
+  }
+}

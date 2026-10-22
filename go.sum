@@ -1,0 +1,4 @@
+github.com/bazel-contrib/buildtools/v10 v10.1.0 h1:3oWCeWz9PgOFqU5tJvgYJhF0Fi6IRlaJAybCdaY1WhE=
+github.com/bazel-contrib/buildtools/v10 v10.1.0/go.mod h1:r2TrnWEmFBvbYF1T/SkhkNccU/4vX69SCp9yY6las9M=
+github.com/buger/jsonparser v1.6.1 h1:I0phFv0PlbLHnM7TZAVjZ2MJ2/eWRTDyuO7GLR98IEs=
+github.com/buger/jsonparser v1.6.1/go.mod h1:6RYKKt7H4d4+iWqouImQ9R2FZql3VbhNgx27UK13J/0=
