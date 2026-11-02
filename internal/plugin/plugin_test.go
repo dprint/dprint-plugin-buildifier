@@ -18,12 +18,13 @@ func TestInfo(t *testing.T) {
 		t.Fatalf("Info() = %d, want %d", size, len(p.sharedBytes))
 	}
 	var info struct {
-		Name            string `json:"name"`
-		Version         string `json:"version"`
-		ConfigKey       string `json:"configKey"`
-		HelpURL         string `json:"helpUrl"`
-		ConfigSchemaURL string `json:"configSchemaUrl"`
-		UpdateURL       string `json:"updateUrl"`
+		Name                    string `json:"name"`
+		Version                 string `json:"version"`
+		ConfigKey               string `json:"configKey"`
+		HelpURL                 string `json:"helpUrl"`
+		ConfigSchemaURL         string `json:"configSchemaUrl"`
+		UpdateURL               string `json:"updateUrl"`
+		SupportsRangeFormatting *bool  `json:"supportsRangeFormatting"`
 	}
 	if err := json.Unmarshal(p.takeFromSharedBytes(), &info); err != nil {
 		t.Fatal(err)
@@ -33,7 +34,8 @@ func TestInfo(t *testing.T) {
 		info.ConfigKey != "buildifier" ||
 		info.HelpURL != "https://dprint.dev/plugins/buildifier" ||
 		info.ConfigSchemaURL != "https://plugins.dprint.dev/dprint/dprint-plugin-buildifier/1.2.3/schema.json" ||
-		info.UpdateURL != "https://plugins.dprint.dev/dprint/dprint-plugin-buildifier/latest.json" {
+		info.UpdateURL != "https://plugins.dprint.dev/dprint/dprint-plugin-buildifier/latest.json" ||
+		info.SupportsRangeFormatting == nil || *info.SupportsRangeFormatting {
 		t.Fatalf("unexpected plugin info: %#v", info)
 	}
 }
