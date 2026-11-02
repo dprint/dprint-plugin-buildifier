@@ -58,7 +58,7 @@ func (p *Plugin) Info(version string) uint32 {
 	data = appendJSONString(data, version)
 	data = append(data, `,"configKey":"buildifier","helpUrl":"https://dprint.dev/plugins/buildifier","configSchemaUrl":`...)
 	data = appendJSONString(data, "https://plugins.dprint.dev/dprint/dprint-plugin-buildifier/"+version+"/schema.json")
-	data = append(data, `,"updateUrl":"https://plugins.dprint.dev/dprint/dprint-plugin-buildifier/latest.json"}`...)
+	data = append(data, `,"updateUrl":"https://plugins.dprint.dev/dprint/dprint-plugin-buildifier/latest.json","supportsRangeFormatting":false}`...)
 	return p.setSharedBytes(data)
 }
 
