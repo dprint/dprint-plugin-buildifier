@@ -35,6 +35,8 @@ jobs:
         run: deno run -A ./scripts/build.ts --docker
       - name: Test Wasm
         run: deno run -A ./scripts/test_wasm.ts
+      - name: Generate config schema
+        run: 'deno run -A --minimum-dependency-age=0 jsr:@dprint/automation@0.14.3/tasks/publish-schema target/plugin.wasm deployment/schema.json --extension bzl'
       - name: Lint workflow generation
         run: |-
           ./.github/workflows/ci.ts --lint
