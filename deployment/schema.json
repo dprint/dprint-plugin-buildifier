@@ -2,6 +2,36 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://plugins.dprint.dev/dprint/dprint-plugin-buildifier/0.0.0/schema.json",
   "type": "object",
+  "x-playground": {
+    "input": [
+      "load('@rules_cc//cc:defs.bzl', 'cc_library','cc_test')",
+      "",
+      "DEFAULT_COPTS=['-Wall','-Werror']",
+      "",
+      "def project_library(name, srcs, deps=[], testonly = False, **kwargs):",
+      "  \"\"\"Defines a library and a test target for it.\"\"\"",
+      "  cc_library(",
+      "    name=name,",
+      "    srcs=srcs,",
+      "    copts=DEFAULT_COPTS+kwargs.pop('copts',[]),",
+      "    deps=deps,",
+      "    testonly=testonly,",
+      "    visibility = ['//visibility:public'],",
+      "    **kwargs",
+      "  )",
+      "  if len(srcs)>0 :",
+      "    cc_test(name = name+'_test', srcs = [s.replace('.cc','_test.cc') for s in srcs], deps = [':' + name, '@googletest//:gtest_main'])",
+      "",
+      "",
+      "",
+      "def _version_impl(ctx):",
+      "    out=ctx.actions.declare_file(ctx.label.name+'.txt')",
+      "    ctx.actions.write(output=out,content=ctx.attr.version)",
+      "    return [DefaultInfo(files=depset([out]))]",
+      "",
+      "version_file=rule(implementation=_version_impl,attrs={'version':attr.string(mandatory=True)})"
+    ]
+  },
   "properties": {
     "newLineKind": {
       "description": "The kind of newline to use. buildifier itself always uses line feeds.",
